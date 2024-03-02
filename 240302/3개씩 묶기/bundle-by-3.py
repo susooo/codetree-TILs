@@ -4,7 +4,7 @@ num_list.sort()
 sum = sum(num_list)
 
 for i in range(0,len(num_list),3):
+    sum -= num_list[i]
     if i+3 > len(num_list):
         break
-    sum -= num_list[i]
 print(sum)
