@@ -4,19 +4,16 @@ count = 0
 for i in range(n):
     h = int(input())
     num.append(h)
+set_num = set(num)
 min_h, max_h = 0,0
-mid_h = (min_h+max_h)//2
 
-while min_h <= max_h:
+for i in set_num:
     tmp = 0
     for j in range(n-1):
-        if num[j]-mid_h > 0 and num[j+1]-mid_h <= 0:
+        if num[j]-i > 0 and num[j+1]-i <= 0:
             tmp += 1
-    if num[n-1]-mid_h > 0:
+    if num[n-1]-i > 0:
         tmp += 1
     if tmp > count:
         count = tmp
-        mid_h+=1
-    else:
-        break
 print(count)
