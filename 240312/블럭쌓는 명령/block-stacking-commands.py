@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 n, k = map(int, input().split())
 n_list = [0]*(n+1)
 for i in range(k):
