@@ -4,9 +4,9 @@ count = 0
 for i in range(n):
     h = int(input())
     num.append(h)
-min_h, max_h = min(num), max(num)
+set_num = set(num)
 
-for i in range(min_h,max_h):
+for i in set_num:
     tmp = 0
     for j in range(n-1):
         if num[j]-i > 0 and num[j+1]-i <= 0:
