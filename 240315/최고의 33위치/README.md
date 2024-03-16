@@ -2,8 +2,8 @@
 https://www.codetree.ai/missions/2/problems/best-place-of-33?&utm_source=clipboard&utm_medium=text
 
 # 복잡도
-수행시간 : 124ms <p>
-메모리 : 25MB
+Time : 124ms <p>
+Memory : 25MB
 
 # 코드
 ```
