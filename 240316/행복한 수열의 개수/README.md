@@ -1,5 +1,5 @@
 # 문제
-https://www.codetree.ai/missions/2/problems/number-of-happy-sequence/description
+[https://www.codetree.ai/missions/2/problems/number-of-happy-sequence/description](https://www.codetree.ai/missions/2/problems/number-of-happy-sequence?&utm_source=clipboard&utm_medium=text)
 
 # 복잡도
 Time : 163ms <p>
