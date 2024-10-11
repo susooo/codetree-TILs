@@ -36,12 +36,11 @@ def move_germ():
 def intern(j):
     global total
 
-    sorted_germ = sorted(germ, key=lambda x: (x[1], x[0]))
-    for rx, ry, rs, rd, rb in sorted_germ:
+    for rx, ry, rs, rd, rb in germ:
         if j == ry:
             total += rb
-            germ.remove((rx,ry,rs,rd,rb))
-            return
+            return rx, ry, rs, rd, rb
+    return -1,-1,-1,-1,-1
 
 
 n,m,k = map(int,input().split())
@@ -55,7 +54,9 @@ for _ in range(k):
     germ.append((x-1,y-1,s,d,b))
 
 for j in range(m):
-    intern(j)
+    rx,ry,rs,rd,rb = intern(j)
+    if rx != -1:
+        germ.remove((rx,ry,rs,rd,rb))
     move_germ()
 
 print(total)
