@@ -35,12 +35,16 @@ def move_germ():
 
 def intern(j):
     global total
-
-    for rx, ry, rs, rd, rb in germ:
-        if j == ry:
-            total += rb
-            return rx, ry, rs, rd, rb
-    return -1,-1,-1,-1,-1
+    lst_x = 101
+    rx, ry, rs, rd, rb = -1,-1,-1,-1,-1
+    for x, y, s, d, b in germ:
+        if j == y:
+            if lst_x > x: 
+                lst_x = x
+                rx, ry, rs, rd, rb = x, y, s, d, b
+         
+    total += rb
+    return rx, ry, rs, rd, rb
 
 
 n,m,k = map(int,input().split())
