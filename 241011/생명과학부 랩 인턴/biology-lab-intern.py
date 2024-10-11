@@ -9,11 +9,8 @@ def change_direction(x,y,d):
     return x,y,d
     
 def compare(germ1, germ2):
-    x1,y1,s1,d1,b1 = germ1
-    x2,y2,s2,d2,b2 = germ2
 
-    if b1 > b2: return (x1,y1,s1,d1,b1)
-    else: return (x2,y2,s2,d2,b2)
+    return germ1 if germ1[4] > germ2[4] else germ2
 
 def move_germ():
     global germ
@@ -21,9 +18,9 @@ def move_germ():
     while germ:
         x,y,s,d,b = germ.popleft()
         for _ in range(s):
-            nx,ny,d = change_direction(x,y,d)
+            x,y,d = change_direction(x,y,d)
             dx,dy = direction[d]
-            x,y = nx+dx, ny+dy
+            x,y = x+dx, y+dy
 
         if not grid[x][y]:
             grid[x][y] = (x,y,s,d,b)
@@ -38,28 +35,28 @@ def move_germ():
 
 def intern(j):
     global total
-    x,y,s,d,b = -1,-1,-1,-1,-1
     for i in range(n):
         if grid_germ[i][j]:
             x,y,s,d,b = grid_germ[i][j]
             grid_germ[i][j] = 0
             total += b
-            break
-    return x,y,s,d,b
+            return x,y,s,d,b
+    return -1, -1, -1, -1, -1
+
 
 n,m,k = map(int,input().split())
 direction = {1:(-1,0), 2:(1,0), 3:(0,1), 4:(0,-1)}
-grid = [[0 for _ in range(m)] for _ in range(n)]
+grid = [[0]*m for _ in range(n)]
 germ = deque()
 total = 0
 
 for _ in range(k):
     x,y,s,d,b = map(int, input().split())
-    x,y = x-1,y-1
-    germ.append((x,y,s,d,b))
+    germ.append((x-1,y-1,s,d,b))
 
 for j in range(m):
-    grid_germ = [[0 for _ in range(m)] for _ in range(n)]
+    grid_germ = [[0]*m for _ in range(n)]
+
     for tx,ty,ts,td,tb in germ:
         grid_germ[tx][ty] =  (tx,ty,ts,td,tb)
 
