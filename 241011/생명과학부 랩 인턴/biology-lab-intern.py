@@ -35,13 +35,13 @@ def move_germ():
 
 def intern(j):
     global total
-    for i in range(n):
-        if grid_germ[i][j]:
-            x,y,s,d,b = grid_germ[i][j]
-            grid_germ[i][j] = 0
-            total += b
-            return x,y,s,d,b
-    return -1, -1, -1, -1, -1
+
+    sorted_germ = sorted(germ, key=lambda x: (x[1], x[0]))
+    for rx, ry, rs, rd, rb in sorted_germ:
+        if j == ry:
+            total += rb
+            germ.remove((rx,ry,rs,rd,rb))
+            return
 
 
 n,m,k = map(int,input().split())
@@ -55,15 +55,7 @@ for _ in range(k):
     germ.append((x-1,y-1,s,d,b))
 
 for j in range(m):
-    grid_germ = [[0]*m for _ in range(n)]
-
-    for tx,ty,ts,td,tb in germ:
-        grid_germ[tx][ty] =  (tx,ty,ts,td,tb)
-
-    rx,ry,rs,rd,rb = intern(j)
-    if rx != -1:
-        germ.remove((rx,ry,rs,rd,rb))
-
+    intern(j)
     move_germ()
 
 print(total)
